@@ -1,0 +1,32 @@
+page-result {
+    .fa .fa-calendar{
+        color: #e5e5e5;
+    }
+
+    .container {
+        background-color: #eee;
+    }
+
+    .secondary {
+        color: #00b300;
+    }
+
+    .primary {
+        color: #2d3d71;
+    }
+
+    .right {
+        float: right;
+    }
+
+    ion-item, h1 {
+        font-size: 5px;
+    }
+
+    ion-label {
+        padding-left: 10px;
+        font-size: 18px;
+        color: #707070;
+        font-weight: bold;
+    }
+}

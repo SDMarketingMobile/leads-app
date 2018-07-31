@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Seleção de Assento</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+      <ion-row>
+        <ion-col col-sm-1>
+          <img src="assets/imgs/seat-black.png" height="70px">
+        </ion-col>
+      </ion-row>
+    <ion-row>
+      <ion-col col-sm-1 *ngFor="let item of arr_seats">
+        <img src="{{ item.url }}" height="70px">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-sm-1 *ngFor="let item of arr_seats">
+        <img src="{{ item.url }}" height="70px">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-sm-1 *ngFor="let item of arr_seats">
+        <img src="{{ item.url }}" height="70px">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-sm-1 *ngFor="let item of arr_seats">
+        <img src="{{ item.url }}" height="70px">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-sm-1 *ngFor="let item of arr_seats">
+        <img src="{{ item.url }}" height="70px">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

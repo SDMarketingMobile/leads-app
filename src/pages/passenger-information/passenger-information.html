@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Informações</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+	<div class="box-passanger" *ngFor="let item of passangers">
+		<h3>Passageiro</h3>
+		<ion-list>
+
+			<ion-item>
+				<ion-label>Gênero</ion-label>
+				<ion-select [(ngModel)]="item.genero">
+					<ion-option value="masc">Masculino</ion-option>
+					<ion-option value="femi">Feminino</ion-option>
+					<ion-option value="outro">Outro</ion-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>Nome</ion-label>
+				<ion-input type="text" [(ngModel)]="item.name"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>Sobrenome</ion-label>
+				<ion-input type="text"[(ngModel)]="item.lastName"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>RG</ion-label>
+				<ion-input type="text" [(ngModel)]="item.rg"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label floating>CPF</ion-label>
+				<ion-input type="text" [(ngModel)]="item.cpf"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label>Data de Nascimento</ion-label>
+				<ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="item.dta_nasc"></ion-datetime>
+			</ion-item>
+
+		</ion-list>
+
+	</div>
+	<br>
+
+</ion-content>

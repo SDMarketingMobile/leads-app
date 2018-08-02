@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search';
 import { ResultPage } from '../pages/result/result';
 import { SeatSelectionPage } from '../pages/seat-selection/seat-selection';
+import { PassengerInformationPage } from '../pages/passenger-information/passenger-information';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { DatePickerModule } from 'ion-datepicker';
     TabsPage,
     AdvancedSearchPage,
     ResultPage,
-    SeatSelectionPage
+    SeatSelectionPage,
+    PassengerInformationPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { DatePickerModule } from 'ion-datepicker';
     TabsPage,
     AdvancedSearchPage,
     ResultPage,
-    SeatSelectionPage
+    SeatSelectionPage,
+    PassengerInformationPage
   ],
   providers: [
     StatusBar,

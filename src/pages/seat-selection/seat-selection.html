@@ -9,35 +9,22 @@
 
 <ion-content padding>
   <ion-grid>
-      <ion-row>
-        <ion-col col-sm-1>
-          <img src="assets/imgs/seat-black.png" height="70px">
-        </ion-col>
-      </ion-row>
     <ion-row>
-      <ion-col col-sm-1 *ngFor="let item of arr_seats">
-        <img src="{{ item.url }}" height="70px">
+      <ion-col col-sm-1 *ngFor="let item of arr_seats" (click)="selectSeat(item)">
+          <img src="assets/imgs/seat-green.png" height="70px" *ngIf="item.selected == 0">
+          <img src="assets/imgs/seat-yellow.png" height="70px" *ngIf="item.selected == 1">
+          <img src="assets/imgs/seat-blue.png" height="70px" *ngIf="item.selected == 2">
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col col-sm-1 *ngFor="let item of arr_seats">
-        <img src="{{ item.url }}" height="70px">
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-sm-1 *ngFor="let item of arr_seats">
-        <img src="{{ item.url }}" height="70px">
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-sm-1 *ngFor="let item of arr_seats">
-        <img src="{{ item.url }}" height="70px">
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-sm-1 *ngFor="let item of arr_seats">
-        <img src="{{ item.url }}" height="70px">
-      </ion-col>
-    </ion-row>
+    <p *ngIf="selecionados == 0">Nenhum assento selecionado!</p>
+    <p *ngIf="selecionados != 0">
+      Assentos Selecionados: 
+      <span *ngFor="let item of selecionados">
+        &nbsp;{{ item.assento }}
+      </span>
+    </p>
+    <button ion-button color="secondary" (click)="goToPagePassengerInf()">
+      <i class="fa fa-check-circle-o"></i> Confirmar
+    </button>
   </ion-grid>
 </ion-content>

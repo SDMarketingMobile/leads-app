@@ -1,5 +1,41 @@
 page-seat-selection {
-	.right{
-		text-align: right;
+	.text-center{
+		text-align: center;
 	}
+
+	.padding{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 30px;
+		padding-right: 30px;
+	} 
+
+	.corredor{
+		width: 30px;
+	}
+
+	ion-col {
+        position: relative;
+    }
+
+    .primary{
+    	color: #2d3d71;
+    }
+
+    .card-title {
+    	text-align: center;
+    	padding-right: 20%;
+        position: absolute;
+        top: 22%;
+        font-size: 1.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .btn{
+    	color: #fff;
+    	text-align: center;
+    	font-size: 15px;
+    }
 }

@@ -1,0 +1,47 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Conferencia de Dados</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<span *ngFor="let item of seats" class="primary">
+		&nbsp;{{ item.assento }}
+	</span>
+	<div class="box-passanger" *ngFor="let item of passengers; let i = index">
+		<h3 class="primary">Passageiro {{ i + 1 }}</h3>
+		<ion-list>
+			<ion-item>
+				<strong class="primary">Gênero:</strong><span class="text-right primary">{{ item.genero }}</span>
+			</ion-item>
+
+			<ion-item>
+				<strong class="primary">Nome Completo:</strong><span class="text-right primary">{{ item.name }} {{ item.lastName }}</span>
+			</ion-item>
+
+			<ion-item>
+				<strong class="primary">RG:</strong><span class="text-right primary">{{ item.rg }}</span>
+			</ion-item>
+
+			<ion-item>
+				<strong class="primary">CPF:</strong><span class="text-right primary">{{ item.cpf }}</span>
+			</ion-item>
+
+			<ion-item>
+				<strong class="primary">Data de Nascimento:</strong><span class="text-right primary">{{ item.dta_nasc }}</span>
+			</ion-item>
+
+		</ion-list>
+	</div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary" (click)="goToLoginPage()">
+    <div class="btn">Realizar Pagamento &nbsp; <i class="fa fa-arrow-right"></i></div>
+  </ion-toolbar>
+</ion-footer>

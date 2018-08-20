@@ -1,0 +1,37 @@
+page-register {
+	.label-title{
+		margin-left: 20px;
+	}
+
+	.block-forma-pagamento{
+		text-align: center;
+	}
+
+	.text-bold{
+		font-weight: bold;
+	}
+
+	.block{
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+
+	ion-scroll {
+		height: 100%;
+		width: 100%;
+	}
+
+	ion-label{
+		color: #c1c1c1;
+	}
+
+	.primary{
+		color: #2d3d71 !important;
+	}
+
+	.btn{
+    	color: #fff;
+    	text-align: center;
+    	font-size: 15px;
+    }
+}

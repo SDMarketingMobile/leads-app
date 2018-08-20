@@ -1,0 +1,125 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Registre-se</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div class="block">
+		<ion-label class="text-bold label-title primary">Dados Pessoais</ion-label>
+		<ion-grid>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Nome</ion-label>
+					<ion-input type="text" [(ngModel)]="nme_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Sobrenome</ion-label>
+					<ion-input type="text" [(ngModel)]="last_nme_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Email</ion-label>
+					<ion-input type="text" [(ngModel)]="email_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Senha</ion-label>
+					<ion-input type="password" [(ngModel)]="password_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Confirmar Senha</ion-label>
+					<ion-input type="password" [(ngModel)]="password_confirmation_register"></ion-input>
+				</ion-item>
+			</ion-row>
+		</ion-grid>
+		<ion-label class="text-bold label-title primary">Endereço</ion-label>
+		<ion-grid>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>CEP</ion-label>
+					<ion-input type="text" [(ngModel)]="cep_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Logradouro</ion-label>
+					<ion-input type="text" [(ngModel)]="logradouro_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Nº</ion-label>
+					<ion-input type="text" [(ngModel)]="numero_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>UF</ion-label>
+					<ion-select [(ngModel)]="uf_register" align>
+						<ion-option value="ac">AC</ion-option>
+						<ion-option value="al">AL</ion-option>
+						<ion-option value="ap">AP</ion-option>
+						<ion-option value="am">AM</ion-option>
+						<ion-option value="ba">BA</ion-option>
+						<ion-option value="ce">CE</ion-option>
+						<ion-option value="df">DF</ion-option>
+						<ion-option value="es">ES</ion-option>
+						<ion-option value="go">GO</ion-option>
+						<ion-option value="ma">MA</ion-option>
+						<ion-option value="mt">MT</ion-option>
+						<ion-option value="ms">MS</ion-option>
+						<ion-option value="mg">MG</ion-option>
+						<ion-option value="pa">PA</ion-option>
+						<ion-option value="pb">PB</ion-option>
+						<ion-option value="pr">PR</ion-option>
+						<ion-option value="pe">PE</ion-option>
+						<ion-option value="pi">PI</ion-option>
+						<ion-option value="rj">RJ</ion-option>
+						<ion-option value="rn">RN</ion-option>
+						<ion-option value="rs">RS</ion-option>
+						<ion-option value="ro">RO</ion-option>
+						<ion-option value="rr">RR</ion-option>
+						<ion-option value="sc">SC</ion-option>
+						<ion-option value="sp">SP</ion-option>
+						<ion-option value="se">SE</ion-option>
+						<ion-option value="to">TO</ion-option>
+					</ion-select>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Cidade</ion-label>
+					<ion-input type="text" [(ngModel)]="cidade_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Senha</ion-label>
+					<ion-input type="password" [(ngModel)]="password_register"></ion-input>
+				</ion-item>
+			</ion-row>
+			<ion-row>
+				<ion-item>
+					<ion-label class="primary" stacked>Confirmar Senha</ion-label>
+					<ion-input type="password" [(ngModel)]="password_confirmation_register"></ion-input>
+				</ion-item>
+			</ion-row>
+		</ion-grid>
+	</div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary" (click)="goToCheckoutPage()">
+    <div class="btn">Cadastrar &nbsp; <i class="fa fa-arrow-right"></i></div>
+  </ion-toolbar>
+</ion-footer>

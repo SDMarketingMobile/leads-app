@@ -6,7 +6,6 @@
   
   </ion-header>
   
-  
   <ion-content padding>
     <ion-list>
     
@@ -35,5 +34,10 @@
         <ion-item></ion-item>
       </ion-list>
       
-      <button ion-button color="secondary" block (click)="goToResultPage()">Pesquisar</button>
   </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary" (click)="goToResultPage()">
+    <div class="btn">Continuar &nbsp; <i class="fa fa-arrow-right"></i></div>
+  </ion-toolbar>
+</ion-footer>

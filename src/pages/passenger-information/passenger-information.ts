@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { PassengerConfirmationPage } from '../passenger-confirmation/passenger-confirmation';
+
 @IonicPage()
 @Component({
   selector: 'page-passenger-information',
@@ -26,6 +28,10 @@ export class PassengerInformationPage {
 				this.passangers.push(item);
 			}
 		}
+	}
+
+	goToConfirmationPage(){
+		this.navCtrl.push(PassengerConfirmationPage, {'informations':this.passangers, 'seatsSelected':this.seats});
 	}
 
 }

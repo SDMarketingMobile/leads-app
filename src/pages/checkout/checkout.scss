@@ -1,0 +1,34 @@
+page-checkout {
+
+	.button-payment{
+		width: 90px;
+		padding: 25px;
+		border: 2px solid !important;
+		border-radius: 3px;
+		font-weight: bold;
+		font-size: 25px;
+	}
+
+	.block-forma-pagamento{
+		text-align: center;
+	}
+
+	.text-bold{
+		font-weight: bold;
+	}
+
+	.block{
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+
+	.primary{
+		color: #2d3d71 !important;
+	}
+
+	.btn{
+    	color: #fff;
+    	text-align: center;
+    	font-size: 15px;
+    }
+}

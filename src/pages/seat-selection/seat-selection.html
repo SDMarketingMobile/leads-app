@@ -1,30 +1,51 @@
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>Seleção de Assento</ion-title>
-  </ion-navbar>
+	<ion-navbar color="primary">
+		<ion-title>Seleção de Assento</ion-title>
+	</ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-sm-1 *ngFor="let item of arr_seats" (click)="selectSeat(item)">
-          <img src="assets/imgs/seat-green.png" height="70px" *ngIf="item.selected == 0">
-          <img src="assets/imgs/seat-yellow.png" height="70px" *ngIf="item.selected == 1">
-          <img src="assets/imgs/seat-blue.png" height="70px" *ngIf="item.selected == 2">
-      </ion-col>
-    </ion-row>
-    <p *ngIf="selecionados == 0">Nenhum assento selecionado!</p>
-    <p *ngIf="selecionados != 0">
-      Assentos Selecionados: 
-      <span *ngFor="let item of selecionados">
-        &nbsp;{{ item.assento }}
-      </span>
-    </p>
-    <button ion-button color="secondary" (click)="goToPagePassengerInf()">
-      <i class="fa fa-check-circle-o"></i> Confirmar
-    </button>
-  </ion-grid>
+	<img src="../assets/imgs/frent_bus.png">
+	<ion-grid class="padding">
+		<ion-row>
+			<ion-col>
+				<ion-row *ngFor="let item of arr_seats">
+					<ion-col col-sm-1 *ngFor="let poltrona of item; let i = index" (click)="selectSeat(poltrona,i)">
+						<img src="assets/imgs/poltrona_livre.png" height="40px" *ngIf="poltrona.selected == 0">
+						<img src="assets/imgs/poltrona_selecionada.png" height="40px" *ngIf="poltrona.selected == 1">
+						<img src="assets/imgs/poltrona_ocupada.png" height="40px" *ngIf="poltrona.selected == 2">
+						<small class="card-title">{{ poltrona.assento }}</small>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+			<div class="corredor"></div>
+			<ion-col>
+				<ion-row *ngFor="let item of arr_seats2">
+					<ion-col col-sm-1 *ngFor="let poltrona of item; let i = index" (click)="selectSeat(poltrona,i)">
+						<img src="assets/imgs/poltrona_livre.png" height="40px" *ngIf="poltrona.selected == 0">
+						<img src="assets/imgs/poltrona_selecionada.png" height="40px" *ngIf="poltrona.selected == 1">
+						<img src="assets/imgs/poltrona_ocupada.png" height="40px" *ngIf="poltrona.selected == 2">
+						<small class="card-title">{{ poltrona.assento }}</small>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+		
+		<p *ngIf="selecionados == 0" class="primary">Nenhum assento selecionado!</p>
+		<p *ngIf="selecionados != 0" class="primary">
+			Assentos Selecionados: 
+			<span *ngFor="let item of selecionados" class="primary">
+				&nbsp;{{ item.assento }}
+			</span>
+		</p>
+	</ion-grid>
 </ion-content>
+
+<ion-footer>
+	<ion-toolbar color="secondary" (click)="goToPagePassengerInf()">
+		<div class="btn">Continuar &nbsp; <i class="fa fa-arrow-right"></i></div>
+	</ion-toolbar>
+</ion-footer>

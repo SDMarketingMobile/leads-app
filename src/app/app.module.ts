@@ -11,6 +11,10 @@ import { AdvancedSearchPage } from '../pages/advanced-search/advanced-search';
 import { ResultPage } from '../pages/result/result';
 import { SeatSelectionPage } from '../pages/seat-selection/seat-selection';
 import { PassengerInformationPage } from '../pages/passenger-information/passenger-information';
+import { PassengerConfirmationPage } from '../pages/passenger-confirmation/passenger-confirmation';
+import { CheckoutPage } from '../pages/checkout/checkout';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +31,11 @@ import { DatePickerModule } from 'ion-datepicker';
     AdvancedSearchPage,
     ResultPage,
     SeatSelectionPage,
-    PassengerInformationPage
+    PassengerInformationPage,
+    PassengerConfirmationPage,
+    CheckoutPage,
+    RegisterPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -38,13 +46,17 @@ import { DatePickerModule } from 'ion-datepicker';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    ContactPage,  
     HomePage,
     TabsPage,
     AdvancedSearchPage,
     ResultPage,
     SeatSelectionPage,
-    PassengerInformationPage
+    PassengerInformationPage,
+    PassengerConfirmationPage,
+    CheckoutPage,
+    RegisterPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

@@ -1,19 +1,24 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Informações</ion-title>
+    <ion-title>Dados dos Passageiros</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content>
-
-	<div class="box-passanger" *ngFor="let item of passangers">
-		<h3>Passageiro</h3>
+<ion-content padding>
+	<div class="box-passanger">
+		<span class="lbl-grey">Assentos Selecionados:</span>
+		<span class="lbl-grey" *ngFor="let item of seats">
+			&nbsp;{{ item.assento }}
+		</span>
+	</div>
+	<div class="box-passanger" *ngFor="let item of passangers; let i = index">
+		<h3 class="lbl-grey">Passageiro {{ i + 1 }}</h3>
 		<ion-list>
 
 			<ion-item>
-				<ion-label>Gênero</ion-label>
+				<ion-label color="primary" stacked>Gênero</ion-label>
 				<ion-select [(ngModel)]="item.genero">
 					<ion-option value="masc">Masculino</ion-option>
 					<ion-option value="femi">Feminino</ion-option>
@@ -22,33 +27,39 @@
 			</ion-item>
 
 			<ion-item>
-				<ion-label floating>Nome</ion-label>
+				<ion-label color="primary" stacked>Nome</ion-label>
 				<ion-input type="text" [(ngModel)]="item.name"></ion-input>
 			</ion-item>
 
 			<ion-item>
-				<ion-label floating>Sobrenome</ion-label>
+				<ion-label color="primary" stacked>Sobrenome</ion-label>
 				<ion-input type="text"[(ngModel)]="item.lastName"></ion-input>
 			</ion-item>
 
 			<ion-item>
-				<ion-label floating>RG</ion-label>
+				<ion-label color="primary" stacked>RG</ion-label>
 				<ion-input type="text" [(ngModel)]="item.rg"></ion-input>
 			</ion-item>
 
 			<ion-item>
-				<ion-label floating>CPF</ion-label>
+				<ion-label color="primary" stacked>CPF</ion-label>
 				<ion-input type="text" [(ngModel)]="item.cpf"></ion-input>
 			</ion-item>
 
 			<ion-item>
-				<ion-label>Data de Nascimento</ion-label>
-				<ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="item.dta_nasc"></ion-datetime>
+				<ion-label color="primary" stacked>Data de Nascimento</ion-label>
+				<ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="item.dta_nasc"></ion-datetime>
 			</ion-item>
 
 		</ion-list>
 
 	</div>
-	<br>
+
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary" (click)="goToConfirmationPage()">
+    <div class="btn">Continuar &nbsp; <i class="fa fa-arrow-right"></i></div>
+  </ion-toolbar>
+</ion-footer>

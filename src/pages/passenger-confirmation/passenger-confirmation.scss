@@ -1,15 +1,19 @@
-page-passenger-information {
+page-passenger-confirmation {
 	.box-passanger {
-		margin-top: 5px;
-		padding: 5px;
+		margin-top: 10px;
+		padding: 15px;
 		border: 1px solid;
 		border-color: #e5e5e5;
 	}
 
-	.lbl-grey {
-		color: #2d3d71;
+	.text-right {
+		float: right;
 	}
 
+	.primary{
+		color: #2d3d71;
+	}
+	
 	.btn{
     	color: #fff;
     	text-align: center;

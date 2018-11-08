@@ -1,65 +1,66 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Dados dos Passageiros</ion-title>
+    <ion-title>Passageiro {{ passengerCurrent + 1 }}/{{ seats.length }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-	<div class="box-passanger">
+	<!-- <div class="box-passenger">
 		<span class="lbl-grey">Assentos Selecionados:</span>
 		<span class="lbl-grey" *ngFor="let item of seats">
 			&nbsp;{{ item.assento }}
 		</span>
-	</div>
-	<div class="box-passanger" *ngFor="let item of passangers; let i = index">
-		<h3 class="lbl-grey">Passageiro {{ i + 1 }}</h3>
-		<ion-list>
+	</div> -->
+	<form [formGroup]="passengersForm" novalidate>
+		<!-- *ngFor="let item of passengers; let i = index" -->
+		<div class="box-passenger">
+			<h3 class="lbl-grey">Dados Pessoais</h3>
 
 			<ion-item>
-				<ion-label color="primary" stacked>Gênero</ion-label>
-				<ion-select [(ngModel)]="item.genero">
-					<ion-option value="masc">Masculino</ion-option>
-					<ion-option value="femi">Feminino</ion-option>
-					<ion-option value="outro">Outro</ion-option>
+				<ion-label color="{{ errorName ? 'danger' : 'primary' }}" stacked>Nome</ion-label>
+				<ion-input type="text" [(ngModel)]="passengerData.first_name" formControlName="first_name" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorLastName ? 'danger' : 'primary' }}" stacked>Sobrenome</ion-label>
+				<ion-input type="text"[(ngModel)]="passengerData.last_name" formControlName="last_name" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorGender ? 'danger' : 'primary' }}" stacked>Gênero</ion-label>
+				<ion-select [(ngModel)]="passengerData.gender" formControlName="gender">
+					<ion-option value="male">Masculino</ion-option>
+					<ion-option value="female">Feminino</ion-option>
+					<ion-option value="other">Outro</ion-option>
 				</ion-select>
 			</ion-item>
 
 			<ion-item>
-				<ion-label color="primary" stacked>Nome</ion-label>
-				<ion-input type="text" [(ngModel)]="item.name"></ion-input>
+				<ion-label color="{{ errorRG ? 'danger' : 'primary' }}" stacked>RG</ion-label>
+				<ion-input type="tel" [(ngModel)]="passengerData.rg" formControlName="rg" (focusout)="validaCampos()"></ion-input>
 			</ion-item>
 
 			<ion-item>
-				<ion-label color="primary" stacked>Sobrenome</ion-label>
-				<ion-input type="text"[(ngModel)]="item.lastName"></ion-input>
+				<ion-label color="{{ errorCPF ? 'danger' : 'primary' }}" stacked>CPF</ion-label>
+				<ion-input type="tel" [(ngModel)]="passengerData.cpf" formControlName="cpf" (focusout)="validaCampos()"></ion-input>
 			</ion-item>
 
 			<ion-item>
-				<ion-label color="primary" stacked>RG</ion-label>
-				<ion-input type="text" [(ngModel)]="item.rg"></ion-input>
+				<ion-label color="{{ errorDtaNasc ? 'danger' : 'primary' }}" stacked>Data de Nascimento</ion-label>
+				<ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="passengerData.birth_date" formControlName="birth_date"></ion-datetime>
 			</ion-item>
 
-			<ion-item>
-				<ion-label color="primary" stacked>CPF</ion-label>
-				<ion-input type="text" [(ngModel)]="item.cpf"></ion-input>
-			</ion-item>
-
-			<ion-item>
-				<ion-label color="primary" stacked>Data de Nascimento</ion-label>
-				<ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" [(ngModel)]="item.dta_nasc"></ion-datetime>
-			</ion-item>
-
-		</ion-list>
-
-	</div>
+		</div>
+	</form>
 
 
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="secondary" (click)="goToConfirmationPage()">
-    <div class="btn">Continuar &nbsp; <i class="fa fa-arrow-right"></i></div>
+  <ion-toolbar color="secondary">
+    <div *ngIf="nextPassenger" class="btn" (click)="goToNextPassenger(passengerData)">Próximo Passageiro &nbsp; <i class="fa fa-arrow-right"></i></div>
+    <div *ngIf="nextPage" class="btn" (click)="goToConfirmationPage(passengerData)">Continuar &nbsp; <i class="fa fa-arrow-right"></i></div>
   </ion-toolbar>
 </ion-footer>

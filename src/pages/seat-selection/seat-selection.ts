@@ -1,18 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import * as _ from 'underscore';
 import * as l from 'lodash';
 
 // Pages
 import { PassengerInformationPage } from '../passenger-information/passenger-information';
-
-
-/**
- * Generated class for the SeatSelectionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -21,17 +13,43 @@ import { PassengerInformationPage } from '../passenger-information/passenger-inf
 })
 export class SeatSelectionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   }
 
   public assentos: any;
   public selecionados = [];
+  public line: any;
 
   public arr_seats = [];
   public arr_seats2 = [];
 
+  public data: any;
+  public routeSelected: any;
+  public lineSelected: any;
+  public totalCarrinho = 0;
+  
   ionViewDidLoad(){
-    this.arr_seats = [
+    let loader = this.loadingCtrl.create({
+			content: "Aguarde! Carregando Informações"
+		});
+    loader.present();
+    
+    this.data = this.navParams.data;
+    this.routeSelected = this.navParams.data.routeSelected;
+    this.lineSelected = this.navParams.data.lineSelected;
+    var vehicle = this.lineSelected['vehicle'];
+    var parcial_assentos = vehicle['seats'] / 2;
+      parcial_assentos = parcial_assentos;
+
+    for (let i = 1; i <= parcial_assentos; i++) {
+      this.arr_seats.push({assento: i, selected:0});
+    }
+
+    for (let i = this.arr_seats.length + 1; i <= vehicle['seats']; i++) {
+      this.arr_seats2.push({assento: i, selected:0});
+    }
+
+    /*this.arr_seats = [
       {assento: 1, selected:2},
       {assento: 2, selected:0},
       {assento: 3, selected:2},
@@ -78,10 +96,11 @@ export class SeatSelectionPage {
       {assento: 40, selected:0},
       {assento: 41, selected:2},
       {assento: 42, selected:2}
-    ]
+    ]*/
 
      this.arr_seats = l.chunk(this.arr_seats, 2);
      this.arr_seats2 = l.chunk(this.arr_seats2, 2);
+     loader.dismiss();
   }
 
 
@@ -98,6 +117,12 @@ export class SeatSelectionPage {
     }
 
     this.selecionados = _.sortBy(this.selecionados, function(o) { return o.assento; });
+
+    this.calculaTotal();
+  }
+
+  calculaTotal(){
+    this.totalCarrinho = (this.selecionados.length * this.lineSelected['person_price']);
   }
 
   goToPagePassengerInf(){
@@ -118,10 +143,19 @@ export class SeatSelectionPage {
       }
     }
 
-    if (select > 0)
-      this.navCtrl.push(PassengerInformationPage, {seatsSelected:this.selecionados});
-    else
-      alert('Selecione ao menos um assento');
+    if (select > 0){
+      this.data['seatsSelecteds'] = this.selecionados;
+      this.data['passengerCurrent'] = 0;
+      this.navCtrl.push(PassengerInformationPage, this.data);
+    }
+    else{
+    	const alert = this.alertCtrl.create({
+  			title: '',
+  			subTitle: 'Favor, selecione ao menos um assento para prosseguir',
+  			buttons: ['OK']
+  		});
+  		alert.present();
+    }
 
   }
 

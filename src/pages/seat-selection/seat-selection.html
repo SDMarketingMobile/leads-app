@@ -34,6 +34,11 @@
 			</ion-col>
 		</ion-row>
 		
+	</ion-grid>
+</ion-content>
+
+<ion-footer>
+	<div class="total-carrinho">
 		<p *ngIf="selecionados == 0" class="primary">Nenhum assento selecionado!</p>
 		<p *ngIf="selecionados != 0" class="primary">
 			Assentos Selecionados: 
@@ -41,10 +46,8 @@
 				&nbsp;{{ item.assento }}
 			</span>
 		</p>
-	</ion-grid>
-</ion-content>
-
-<ion-footer>
+		<p class="primary">Total Carrinho: <span class="text-right"><strong>{{ totalCarrinho | currency:'BRL':2 }}</strong></span></p>
+	</div>
 	<ion-toolbar color="secondary" (click)="goToPagePassengerInf()">
 		<div class="btn">Continuar &nbsp; <i class="fa fa-arrow-right"></i></div>
 	</ion-toolbar>

@@ -1,9 +1,7 @@
 page-passenger-confirmation {
-	.box-passanger {
-		margin-top: 10px;
-		padding: 15px;
-		border: 1px solid;
-		border-color: #e5e5e5;
+	.box-passenger {
+		margin-top: 5px;
+		padding: 5px;
 	}
 
 	.text-right {
@@ -18,5 +16,10 @@ page-passenger-confirmation {
     	color: #fff;
     	text-align: center;
     	font-size: 15px;
+    }
+
+    .error{
+      color: #ff0000;
+      font-size: 12px;
     }
 }

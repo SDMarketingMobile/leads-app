@@ -1,8 +1,14 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title class="center"><h2>Rotas</h2></ion-title>
-    <ion-searchbar placeholder="Procurar destino" showCancelButton></ion-searchbar>
-    <button ion-button block color="secondary" (click)="goToAdvancedSearchPage()">Pesquisa Avançada</button>
+    <ion-searchbar placeholder="Procurar destino" showCancelButton [(ngModel)]="busca.destino" (keyup)="getCities(1,5)"></ion-searchbar>
+    
+    <ion-list class="search-box" *ngIf="cidades.length > 0">
+      <button ion-item *ngFor="let item of cidades" (click)="goToResultPage(item.name)">
+        {{ item.name }}
+      </button> 
+    </ion-list>
+
+    <button ion-button block color="secondary" (click)="goToAdvancedSearchPage()" *ngIf="cidades.length == 0" >Pesquisa Avançada</button>
   </ion-navbar>
 </ion-header>
 
@@ -73,4 +79,26 @@
     </ion-slides>
   </div>
   <ion-label>&nbsp;</ion-label>
+
+  <ion-fab right bottom *ngIf="data">
+    <button ion-fab color="secondary" >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab right bottom *ngIf="data">
+    <button ion-fab color="secondary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab color="primary"><ion-icon name="basket" (click)="goToCustomerSalesPage()"></ion-icon></button>
+      <button ion-fab color="primary" ><ion-icon name="power" (click)="logout()"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-fab right bottom *ngIf="!data">
+    <button ion-fab color="secondary" (click)="login()">
+      <ion-icon name="contact"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

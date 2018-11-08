@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
+import { CheckoutPage } from '../checkout/checkout';
+
+import moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -10,33 +13,55 @@ import { LoginPage } from '../login/login';
 })
 export class PassengerConfirmationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public modalCtrl: ModalController
+            ){}
 
-  public passengers = [];
-  public seatsSelected = [];
+  public data = [];
 
   ionViewDidLoad() {
-    this.passengers = this.navParams.data.informations;
-    this.seatsSelected = this.navParams.data.seatsSelected;
+    this.data = this.navParams.data;
 
-    for(let item of this.passengers){
-    	switch (item.genero) {
-    		case "masc":
-    			item.genero = 'Masculino';
-    			break;
-    		case "femi":
-    			item.genero = "Feminino";
-    			break
-    		default:
-    			item.genero = "Outro";
-    			break;
-    	}
+    if(this.data['passengers']){
+      for(let item of this.data['passengers']){
+        item.birth_date = moment(item.birth_date, 'YYYY-MM-DD').format('DD/MM/YYYY');
+        switch (item.gender) {
+          case "male":
+            item.genero = 'Masculino';
+            break;
+          case "female":
+            item.genero = "Feminino";
+            break
+          default:
+            item.genero = "Outro";
+            break;
+        }
+      }
     }
   }
 
-  goToLoginPage(){
-  	this.navCtrl.push(LoginPage);
+  verificaLogin(){
+    var customer = localStorage.getItem('app.leads.user.data');
+    customer = JSON.parse(customer);
+    if (customer)
+      this.goToCheckoutPage();
+    else
+      this.goToLoginModal();
+  }
+
+  goToLoginModal(){
+    const modal = this.modalCtrl.create(LoginPage);
+      modal.onDidDismiss(result => {
+        if(result != null) {
+          this.goToCheckoutPage();
+        }
+      });
+      modal.present();
+  }
+
+  goToCheckoutPage(){
+    this.navCtrl.push(CheckoutPage, this.data);
   }
 
 }

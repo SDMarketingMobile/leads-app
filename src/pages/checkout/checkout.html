@@ -11,116 +11,78 @@
 	<div>
 		<ion-label class="text-bold primary">Forma de Pagamento</ion-label>
 		<div class="block-forma-pagamento">
-			<button #cc class="button-payment" ion-button outline color="light" (click)="btnActivate(cc, cd, bl, 1); hideShowBlock('ccp')">
-				<i class="fa fa-credit-card"></i>
-			</button>
-			<button #cd class="button-payment" ion-button outline color="light" (click)="btnActivate(cc, cd, bl, 2); hideShowBlock('cdp')">
+			<button #cc class="button-payment" ion-button outline color="light" (click)="btnActivate(cc, bl, 1); hideShowBlock('ccp')">
 				<i class="fa fa-credit-card-alt"></i>
 			</button>
-			<button #bl class="button-payment" ion-button outline color="light" (click)="btnActivate(cc, cd, bl, 3); hideShowBlock('blp')">
+			<button #bl class="button-payment" ion-button outline color="light" (click)="btnActivate(cc, bl, 2); hideShowBlock('blp')">
 				<i class="fa fa-file-text-o"></i>
 			</button>
 		</div>
 	</div>
 	<hr>
 	<div *ngIf="hideShowCC">
-		<ion-label class="text-bold primary">Detalhes</ion-label>
-		<ion-grid>
-			<ion-row>
-				<ion-col col-7>
+		<form [formGroup]="paymentCreditCardForm" novalidate>
+			<ion-label class="text-bold primary">Detalhes</ion-label>
+			<ion-grid>
+				<ion-row>
+					<ion-col col-7>
+						<ion-item>
+							<ion-label color="{{ errorNumCard ? 'danger' : 'primary' }}" stacked>Número do Cartão</ion-label>
+							<ion-input type="number" max="9999999999999999" placeholder="xxxx xxxx xxxx xxxx" formControlName="numCard" (focusout)="validaCampos()"></ion-input>
+						</ion-item>
+					</ion-col>
+					<ion-col col-4>
+						<ion-item>
+							<ion-label color="{{ errorSecCode ? 'danger' : 'primary' }}" stacked>Cód. Segurança</ion-label>
+							<ion-input type="number" max="999" placeholder="xxx" formControlName="secCode" (focusout)="validaCampos()"></ion-input>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row>
 					<ion-item>
-						<ion-label class="primary" stacked>Número do Cartão</ion-label>
-						<ion-input type="number" max="9999999999999999" placeholder="xxxx xxxx xxxx xxxx" [(ngModel)]="num_cartao"></ion-input>
+						<ion-label color="{{ errorNameCard ? 'danger' : 'primary' }}" stacked>Nome no Cartão</ion-label>
+						<ion-input type="text" placeholder="xxxxx x. xxxxx" formControlName="nameCard" (focusout)="validaCampos()"></ion-input>
 					</ion-item>
-				</ion-col>
-				<ion-col col-4>
-					<ion-item>
-						<ion-label class="primary" stacked>Cód. Segurança</ion-label>
-						<ion-input type="number" max="999" placeholder="xxx" [(ngModel)]="cod_seguranca_cartao"></ion-input>
-					</ion-item>
-				</ion-col>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Nome no Cartão</ion-label>
-					<ion-input type="text" placeholder="xxxxx x. xxxxx" [(ngModel)]="nme_cartao"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-col col-6>
-					<ion-item>
-						<ion-label class="primary" stacked>Validade</ion-label>
-						<ion-datetime displayFormat="MM" placeholder="Mês" pickerFormat="MM" [(ngModel)]="mes_validade_cartao"></ion-datetime>
-					</ion-item>
-				</ion-col>
-				<ion-col col-6>
-					<ion-item>
-						<ion-label class="primary" stacked>&nbsp;</ion-label>
-						<ion-datetime displayFormat="YYYY" placeholder="Ano" pickerFormat="YYYY" [(ngModel)]="ano_validade_cartao"></ion-datetime>
-					</ion-item>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
-	</div>
-	<div *ngIf="hideShowCD">
-		<ion-label class="text-bold primary">Detalhes</ion-label>
-		<ion-grid>
-			<ion-row>
-				<ion-col col-7>
-					<ion-item>
-						<ion-label class="primary" stacked>Número do Cartão</ion-label>
-						<ion-input type="number" max="9999999999999999" placeholder="xxxx xxxx xxxx xxxx" [(ngModel)]="num_cartao"></ion-input>
-					</ion-item>
-				</ion-col>
-				<ion-col col-4>
-					<ion-item>
-						<ion-label class="primary" stacked>Cód. Segurança</ion-label>
-						<ion-input type="number" max="999" placeholder="xxx" [(ngModel)]="cod_seguranca_cartao"></ion-input>
-					</ion-item>
-				</ion-col>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Nome no Cartão</ion-label>
-					<ion-input type="text" placeholder="xxxxx x. xxxxx" [(ngModel)]="nme_cartao"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-col col-6>
-					<ion-item>
-						<ion-label class="primary" stacked>Validade</ion-label>
-						<ion-datetime displayFormat="MM" placeholder="Mês" pickerFormat="MM" [(ngModel)]="mes_validade_cartao"></ion-datetime>
-					</ion-item>
-				</ion-col>
-				<ion-col col-6>
-					<ion-item>
-						<ion-label class="primary" stacked>&nbsp;</ion-label>
-						<ion-datetime displayFormat="YYYY" placeholder="Ano" pickerFormat="YYYY" [(ngModel)]="ano_validade_cartao"></ion-datetime>
-					</ion-item>
-				</ion-col>
-			</ion-row>
-		</ion-grid>
+				</ion-row>
+				<ion-row>
+					<ion-col col-6>
+						<ion-item>
+							<ion-label class="primary" stacked>Validade</ion-label>
+							<ion-datetime displayFormat="MM" placeholder="Mês" pickerFormat="MM"></ion-datetime>
+						</ion-item>
+					</ion-col>
+					<ion-col col-6>
+						<ion-item>
+							<ion-label class="primary" stacked>&nbsp;</ion-label>
+							<ion-datetime displayFormat="YYYY" placeholder="Ano" pickerFormat="YYYY"></ion-datetime>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</form>
 	</div>
 	<div *ngIf="hideShowBL">
-		<ion-label class="text-bold primary">Detalhes</ion-label>
-		<ion-grid>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>CPF</ion-label>
-					<ion-input type="text" placeholder="xxx.xxx.xxx-xx" [(ngModel)]="nme_cartao"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Nome Completo</ion-label>
-					<ion-input type="text" placeholder="xxxxx x. xxxxx" [(ngModel)]="nme_cartao"></ion-input>
-				</ion-item>
-			</ion-row>
-		</ion-grid>
+		<form [formGroup]="paymentBankSlipForm" novalidate>
+			<ion-label class="text-bold primary">Detalhes</ion-label>
+			<ion-grid>
+				<ion-row>
+					<ion-item>
+						<ion-label color="{{ errorCPF ? 'danger' : 'primary' }}" stacked>CPF</ion-label>
+						<ion-input type="text" placeholder="xxx.xxx.xxx-xx" formControlName="cpf" value="{{ customer.cpf_cnpj }}" (focusout)="validaCampos()" ></ion-input>
+					</ion-item>
+				</ion-row>
+				<ion-row>
+					<ion-item>
+						<ion-label color="{{ errorName ? 'danger' : 'primary' }}" stacked>Nome Completo</ion-label>
+						<ion-input type="text" placeholder="xxxxx xxxxx xxxxx" formControlName="name" value="{{ customer.name }}" (focusout)="validaCampos()"></ion-input>
+					</ion-item>
+				</ion-row>
+			</ion-grid>
+		</form>
 	</div>
 </ion-content>
 <ion-footer>
   <ion-toolbar color="secondary">
-    <div class="btn">Finalizar Compra &nbsp; <i class="fa fa-arrow-right"></i></div>
+    <div class="btn" (click)="saveSale()">Finalizar Compra &nbsp; <i class="fa fa-arrow-right"></i></div>
   </ion-toolbar>
 </ion-footer>

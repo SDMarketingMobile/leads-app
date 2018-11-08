@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -13,13 +13,30 @@ import { SeatSelectionPage } from '../pages/seat-selection/seat-selection';
 import { PassengerInformationPage } from '../pages/passenger-information/passenger-information';
 import { PassengerConfirmationPage } from '../pages/passenger-confirmation/passenger-confirmation';
 import { CheckoutPage } from '../pages/checkout/checkout';
+import { CheckoutSuccessPage } from '../pages/checkout-success/checkout-success';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { UserSalesPage } from '../pages/user-sales/user-sales';
+import { SaleDetailsPage } from '../pages/sale-details/sale-details';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PageUtilProvider } from '../providers/page-util/page-util';
 import { DatePickerModule } from 'ion-datepicker';
+
+import { HttpModule } from '@angular/http';
+import { LinesProvider } from '../providers/lines/lines';
+import { RoutesProvider } from '../providers/routes/routes';
+
+import localePtBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { LoginProvider } from '../providers/login/login';
+import { UsersProvider } from '../providers/users/users';
+import { UtilsProvider } from '../providers/utils/utils';
+import { SaleProvider } from '../providers/sale/sale';
+
+
+registerLocaleData(localePtBr);
 
 @NgModule({
   declarations: [
@@ -35,12 +52,16 @@ import { DatePickerModule } from 'ion-datepicker';
     PassengerConfirmationPage,
     CheckoutPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    CheckoutSuccessPage,
+    UserSalesPage,
+    SaleDetailsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    DatePickerModule
+    DatePickerModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,13 +77,23 @@ import { DatePickerModule } from 'ion-datepicker';
     PassengerConfirmationPage,
     CheckoutPage,
     RegisterPage,
-    LoginPage
+    LoginPage,
+    CheckoutSuccessPage,
+    UserSalesPage,
+    SaleDetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PageUtilProvider
+    {provide: LOCALE_ID, useValue: "pt-BR"},
+    PageUtilProvider,
+    LinesProvider,
+    RoutesProvider,
+    LoginProvider,
+    UsersProvider,
+    UtilsProvider,
+    SaleProvider
   ]
 })
 export class AppModule {}

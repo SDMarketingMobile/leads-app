@@ -1,125 +1,101 @@
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>Registre-se</ion-title>
-  </ion-navbar>
+	<ion-navbar color="primary">
+		<ion-title>Registre-se</ion-title>
+		<ion-buttons start>
+			<button ion-button (click)="dismissModal(null)">
+				<span ion-text showWhen="ios">Cancelar</span>
+				<ion-icon item-right name="close" showWhen="android,windows"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<div class="block">
-		<ion-label class="text-bold label-title primary">Dados Pessoais</ion-label>
-		<ion-grid>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Nome</ion-label>
-					<ion-input type="text" [(ngModel)]="nme_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Sobrenome</ion-label>
-					<ion-input type="text" [(ngModel)]="last_nme_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Email</ion-label>
-					<ion-input type="text" [(ngModel)]="email_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Senha</ion-label>
-					<ion-input type="password" [(ngModel)]="password_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Confirmar Senha</ion-label>
-					<ion-input type="password" [(ngModel)]="password_confirmation_register"></ion-input>
-				</ion-item>
-			</ion-row>
-		</ion-grid>
-		<ion-label class="text-bold label-title primary">Endereço</ion-label>
-		<ion-grid>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>CEP</ion-label>
-					<ion-input type="text" [(ngModel)]="cep_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Logradouro</ion-label>
-					<ion-input type="text" [(ngModel)]="logradouro_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Nº</ion-label>
-					<ion-input type="text" [(ngModel)]="numero_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>UF</ion-label>
-					<ion-select [(ngModel)]="uf_register" align>
-						<ion-option value="ac">AC</ion-option>
-						<ion-option value="al">AL</ion-option>
-						<ion-option value="ap">AP</ion-option>
-						<ion-option value="am">AM</ion-option>
-						<ion-option value="ba">BA</ion-option>
-						<ion-option value="ce">CE</ion-option>
-						<ion-option value="df">DF</ion-option>
-						<ion-option value="es">ES</ion-option>
-						<ion-option value="go">GO</ion-option>
-						<ion-option value="ma">MA</ion-option>
-						<ion-option value="mt">MT</ion-option>
-						<ion-option value="ms">MS</ion-option>
-						<ion-option value="mg">MG</ion-option>
-						<ion-option value="pa">PA</ion-option>
-						<ion-option value="pb">PB</ion-option>
-						<ion-option value="pr">PR</ion-option>
-						<ion-option value="pe">PE</ion-option>
-						<ion-option value="pi">PI</ion-option>
-						<ion-option value="rj">RJ</ion-option>
-						<ion-option value="rn">RN</ion-option>
-						<ion-option value="rs">RS</ion-option>
-						<ion-option value="ro">RO</ion-option>
-						<ion-option value="rr">RR</ion-option>
-						<ion-option value="sc">SC</ion-option>
-						<ion-option value="sp">SP</ion-option>
-						<ion-option value="se">SE</ion-option>
-						<ion-option value="to">TO</ion-option>
-					</ion-select>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Cidade</ion-label>
-					<ion-input type="text" [(ngModel)]="cidade_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Senha</ion-label>
-					<ion-input type="password" [(ngModel)]="password_register"></ion-input>
-				</ion-item>
-			</ion-row>
-			<ion-row>
-				<ion-item>
-					<ion-label class="primary" stacked>Confirmar Senha</ion-label>
-					<ion-input type="password" [(ngModel)]="password_confirmation_register"></ion-input>
-				</ion-item>
-			</ion-row>
-		</ion-grid>
-	</div>
+	<form [formGroup]="newUserForm" novalidate>
+		<!-- *ngFor="let item of passengers; let i = index" -->
+		<div class="box-passenger">
+			<ion-item>
+				<ion-label color="{{ errorName ? 'danger' : 'primary' }}" stacked>Nome Completo</ion-label>
+				<ion-input type="text" formControlName="name" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorEmail ? 'danger' : 'primary' }}" stacked>Email</ion-label>
+				<ion-input type="text" formControlName="email" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorPassword ? 'danger' : 'primary' }}" stacked>Senha</ion-label>
+				<ion-input type="password" formControlName="password" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorCpfCnpj ? 'danger' : 'primary' }}" stacked>CPF/CNPJ</ion-label>
+				<ion-input type="text" formControlName="cpfCnpj" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-grid>
+				<ion-row>
+					<ion-col col-4>
+							<ion-item>
+								<ion-label color="{{ errorPhonePrefix ? 'danger' : 'primary' }}" stacked>Prefixo</ion-label>
+								<ion-input type="text" formControlName="phonePrefix" (focusout)="validaCampos()"></ion-input>
+							</ion-item>
+						</ion-col>
+						<ion-col col-8>
+								<ion-item>
+									<ion-label color="{{ errorPhone ? 'danger' : 'primary' }}" stacked>Telefone</ion-label>
+									<ion-input type="text" formControlName="phone" (focusout)="validaCampos()"></ion-input>
+								</ion-item>
+						</ion-col>
+				</ion-row>
+			</ion-grid>
+
+			<ion-item>
+				<ion-label color="{{ errorStreet ? 'danger' : 'primary' }}" stacked>Rua</ion-label>
+				<ion-input type="text" formControlName="street" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorNumber ? 'danger' : 'primary' }}" stacked>Número</ion-label>
+				<ion-input type="text" formControlName="number" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="primary" stacked>Complemento</ion-label>
+				<ion-input type="text" formControlName="complement" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorDistrict ? 'danger' : 'primary' }}" stacked>Bairro</ion-label>
+				<ion-input type="text" formControlName="district" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorCity ? 'danger' : 'primary' }}" stacked>Cidade</ion-label>
+				<ion-input type="text" formControlName="city" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorState ? 'danger' : 'primary' }}" stacked>Estado</ion-label>
+				<ion-input type="text" formControlName="state" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+			<ion-item>
+				<ion-label color="{{ errorZipCode ? 'danger' : 'primary' }}" stacked>CEP</ion-label>
+				<ion-input type="text" formControlName="zipCode" (focusout)="validaCampos()"></ion-input>
+			</ion-item>
+
+		</div>
+	</form>
+
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar color="secondary" (click)="goToCheckoutPage()">
+  <ion-toolbar color="secondary" (click)="newUser()">
     <div class="btn">Cadastrar &nbsp; <i class="fa fa-arrow-right"></i></div>
   </ion-toolbar>
 </ion-footer>

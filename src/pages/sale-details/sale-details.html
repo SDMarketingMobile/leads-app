@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Detalhes da compra</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header><strong>Origem</strong></ion-list-header>
+    <ion-item>
+      <h2>{{ line.city_origin }}</h2>
+      <p>{{ route.departure_date }}</p>
+    </ion-item>
+
+    <ion-list-header><strong>Destino</strong></ion-list-header>
+    <ion-item>
+      <h2>{{ line.city_destiny }}</h2>
+      <p>{{ route.arrival_date }}</p>
+    </ion-item>
+
+    <ion-list-header><strong>Passageiros</strong></ion-list-header>
+
+    <ion-item *ngFor="let item of sale.passengers">
+      <h2 text-uppercase>{{ item.last_name }}, {{ item.first_name }}</h2>
+      <p>RG: {{ item.rg }} | CPF: {{ item.cpf }}</p>
+      <p text-uppercase>{{ item.gender }} | {{ item.birth_date }}</p>
+    </ion-item>
+
+    <ion-list-header><strong>Valor da Compra</strong></ion-list-header>
+    <ion-item>
+      <h2>Assentos: {{ seats.length }}<span class="text-right">Total: {{ totalCompra | currency:'BRL':2 }}</span></h2>
+      <p>Forma de Pagamento: <span class="text-right">{{ formaPagamento }}</span></p>
+    </ion-item>
+  </ion-list>
+</ion-content>

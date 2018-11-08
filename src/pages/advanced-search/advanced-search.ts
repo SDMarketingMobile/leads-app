@@ -1,26 +1,38 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ResultPage } from '../result/result';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the AdvancedSearchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ResultPage } from '../result/result';
 
 @IonicPage()
 @Component({
-  selector: 'page-advanced-search',
-  templateUrl: 'advanced-search.html',
+	selector: 'page-advanced-search',
+	templateUrl: 'advanced-search.html',
 })
 export class AdvancedSearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
 
-  goToResultPage(){
-    this.navCtrl.push(ResultPage);
-  }
+	}
+
+	public busca = [];
+
+
+	ionViewDidLoad(){
+		this.busca = this.navParams.data.busca;
+	}
+
+	goToResultPage(){
+		if (this.busca['destino']){
+			this.navCtrl.push(ResultPage, {'busca':this.busca});
+		}
+		else{
+			const alert = this.alertCtrl.create({
+				title: 'Atenção!',
+				subTitle: 'Favor, informe um destino',
+				buttons: ['OK']
+			});
+			alert.present();
+		}
+	}
 
 }

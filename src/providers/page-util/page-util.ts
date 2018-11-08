@@ -2,10 +2,6 @@
 import { Injectable } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ContactPage } from '../../pages/contact/contact';
-import { HomePage } from '../../pages/home/home';
-import { AboutPage } from '../../pages/about/about';
-
 /*
   Generated class for the PageUtilProvider provider.
 

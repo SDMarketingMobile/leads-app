@@ -8,78 +8,25 @@
 
 
 <ion-content class="container">
+  <p *ngIf="msgError">{{ msgError }}</p>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let route of list_routes">
       <h1 class="primary">
-        <strong>18:00</strong>
+        <strong>{{ route.departure_hour }}</strong>
         <span class="right secondary">
-          <strong>R$ 79,90</strong>
+          <strong>{{ line.person_price | currency:'BRL':2 }}</strong>
           <br>
           <br>
-          <button ion-button color="secondary" block (click)="goToSeatSelectionPage()">Reservar</button>
+          <button ion-button color="secondary" block (click)="goToSeatSelectionPage(route, line)">Reservar</button>
         </span>
       </h1>
-      <small><i class="fa fa-calendar"></i>&nbsp;02/08/2018</small>
+      <small><i class="fa fa-calendar"></i>&nbsp;{{ route.departure_date }}</small>
       <br>
-      <small><i class="fa fa-paper-plane"></i>&nbsp;São Paulo - SP</small>
+      <small><i class="fa fa-paper-plane"></i>&nbsp;{{ line.city_origin }} - {{ line.state_origin }}</small>
       <br>
-      <small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;Belo Horizonte - MG</small>
+      <small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;{{ line.city_destiny }} - {{ line.state_destiny }}</small>
       <br>
-      <small><i class="fa fa-clock-o"></i> &nbsp;Previsão de chegada: 30/07 às 02:30</small>
-    </ion-item>
-    <ion-item>
-      <h1 class="primary">
-        <strong>18:00</strong>
-        <span class="right secondary">
-          <strong>R$ 79,90</strong>
-          <br>
-          <br>
-          <button ion-button color="secondary" block (click)="goToSeatSelectionPage()">Reservar</button>
-        </span>
-      </h1>
-      <small><i class="fa fa-calendar"></i>&nbsp;13/08/2018</small>
-      <br>
-      <small><i class="fa fa-paper-plane"></i>&nbsp;São Paulo - SP</small>
-      <br>
-      <small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;Belo Horizonte - MG</small>
-      <br>
-      <small><i class="fa fa-clock-o"></i> &nbsp;Previsão de chegada: 30/07 às 02:30</small>
-    </ion-item>
-    <ion-item>
-      <h1 class="primary">
-        <strong>18:00</strong>
-        <span class="right secondary">
-          <strong>R$ 79,90</strong>
-          <br>
-          <br>
-          <button ion-button color="secondary" block (click)="goToSeatSelectionPage()">Reservar</button>
-        </span>
-      </h1>
-      <small><i class="fa fa-calendar"></i>&nbsp;21/08/2018</small>
-      <br>
-      <small><i class="fa fa-paper-plane"></i>&nbsp;São Paulo - SP</small>
-      <br>
-      <small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;Belo Horizonte - MG</small>
-      <br>
-      <small><i class="fa fa-clock-o"></i> &nbsp;Previsão de chegada: 30/07 às 02:30</small>
-    </ion-item>
-    <ion-item>
-      <h1 class="primary">
-        <strong>18:00</strong>
-        <span class="right secondary">
-          <strong>R$ 79,90</strong>
-          <br>
-          <br>
-          <button ion-button color="secondary" block (click)="goToSeatSelectionPage()">Reservar</button>
-        </span>
-      </h1>
-      <small><i class="fa fa-calendar"></i>&nbsp;30/08/2018</small>
-      <br>
-      <small><i class="fa fa-paper-plane"></i>&nbsp;São Paulo - SP</small>
-      <br>
-      <small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;Belo Horizonte - MG</small>
-      <br>
-      <small><i class="fa fa-clock-o"></i> &nbsp;Previsão de chegada: 30/07 às 02:30</small>
+      <small><i class="fa fa-clock-o"></i> &nbsp;Previsão de chegada: {{ route.arrival_date }}</small>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Minhas Compras</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of sales" (click)="goToSaleDetailPage(item)">
+      <h2 text-uppercase>{{ item.route.line.city_origin }} >> {{ item.route.line.city_destiny }}</h2>
+      <p>{{ item.created_at }}</p>
+      <p>{{ item.seats.length }} passageiros</p>
+      <button ion-button clear item-end>
+        <strong>{{ (item.route.line.person_price * item.seats.length) | currency : 'BRL' : 2 }}</strong>
+      </button>
+    </button>
+  </ion-list>
+</ion-content>

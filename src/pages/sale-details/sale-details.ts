@@ -32,7 +32,6 @@ export class SaleDetailsPage {
       case 'credit_card':
         this.formaPagamento = "Cartão de Crédito";
     }
-
   }
 
 }

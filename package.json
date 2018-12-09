@@ -42,6 +42,7 @@
     "ionicons": "3.0.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
+    "ngx-qrcode2": "0.0.9",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "underscore": "^1.9.1",

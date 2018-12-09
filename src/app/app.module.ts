@@ -18,6 +18,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { UserSalesPage } from '../pages/user-sales/user-sales';
 import { SaleDetailsPage } from '../pages/sale-details/sale-details';
+import { QrcodeModalPage } from '../pages/qrcode-modal/qrcode-modal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +35,7 @@ import { LoginProvider } from '../providers/login/login';
 import { UsersProvider } from '../providers/users/users';
 import { UtilsProvider } from '../providers/utils/utils';
 import { SaleProvider } from '../providers/sale/sale';
-
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 registerLocaleData(localePtBr);
 
@@ -55,13 +56,15 @@ registerLocaleData(localePtBr);
     LoginPage,
     CheckoutSuccessPage,
     UserSalesPage,
-    SaleDetailsPage
+    SaleDetailsPage,
+    QrcodeModalPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     DatePickerModule,
-    HttpModule
+    HttpModule,
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,7 +83,8 @@ registerLocaleData(localePtBr);
     LoginPage,
     CheckoutSuccessPage,
     UserSalesPage,
-    SaleDetailsPage
+    SaleDetailsPage,
+    QrcodeModalPage
   ],
   providers: [
     StatusBar,

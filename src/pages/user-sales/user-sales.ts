@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { SaleProvider } from '../../providers/sale/sale';
 import { SaleDetailsPage } from '../sale-details/sale-details';
+import { QrcodeModalPage } from '../qrcode-modal/qrcode-modal';
+import { ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,7 +16,8 @@ export class UserSalesPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public loadingCtrl: LoadingController,
-    private saleProv: SaleProvider
+    private saleProv: SaleProvider,
+    public modalCtrl: ModalController,
   ) {
     // Do nothing here...
   }
@@ -51,4 +54,10 @@ export class UserSalesPage {
     this.navCtrl.push(SaleDetailsPage, sale);
   }
 
+  goToQrCodeModal(sale) {
+    const modal = this.modalCtrl.create(QrcodeModalPage, sale);
+      modal.onDidDismiss(result => {
+      });
+    modal.present();
+  }
 }

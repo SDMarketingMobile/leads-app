@@ -9,13 +9,21 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of sales" (click)="goToSaleDetailPage(item)">
-      <h2 text-uppercase>{{ item.route.line.city_origin }} >> {{ item.route.line.city_destiny }}</h2>
-      <p>{{ item.created_at }}</p>
-      <p>{{ item.seats.length }} passageiros</p>
-      <button ion-button clear item-end>
-        <strong>{{ (item.route.line.person_price * item.seats.length) | currency : 'BRL' : 2 }}</strong>
+    <ion-item-sliding *ngFor="let item of sales">
+      <button ion-item (click)="goToSaleDetailPage(item)">
+        <h2 text-uppercase>{{ item.route.line.city_origin }} >> {{ item.route.line.city_destiny }}</h2>
+        <p>{{ item.created_at }}</p>
+        <p>{{ item.seats.length }} passageiros</p>
+        <button ion-button clear item-end>
+          <strong>{{ (item.route.line.person_price * item.seats.length) | currency : 'BRL' : 2 }}</strong>
+        </button>
       </button>
-    </button>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="goToQrCodeModal(item)">
+          <ion-icon name="barcode"></ion-icon>
+          QR Code
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

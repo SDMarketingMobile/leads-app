@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+	<ion-title>Cupom</ion-title>
+	<ion-buttons start>
+      <button ion-button (click)="dismissModal(null)">
+        <span ion-text showWhen="ios">Cancelar</span>
+        <ion-icon item-right name="close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-card class="box-qrcode">
+		<ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+		<ion-card-content>
+			<ion-card-title>
+				Cupom
+			</ion-card-title>
+			<p>{{ this.qrData }}</p>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

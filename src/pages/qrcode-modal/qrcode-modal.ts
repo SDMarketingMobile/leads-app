@@ -13,12 +13,28 @@ export class QrcodeModalPage {
   			public viewCtrl: ViewController) {
   }
 
-  public sale;
   public qrData = null;
   public createdCode = null;
+  public sale = [];
+  public route = [];
+  public line = [];
+  public line_origin = [];
+  public line_destiny = [];
+  public seats = [];
+  public totalCompra = 0;
+  public formaPagamento: any;
+  
+
   ionViewDidLoad(){
   	this.sale = this.navParams.data;
-  	this.qrData = this.sale['id'];
+    this.qrData = this.sale['id'];
+    this.route = this.sale['route'];
+    this.line = this.route['line'];
+    this.line_origin = this.line['origin'];
+    this.line_destiny = this.line['destiny'];
+    this.seats = this.sale['seats'];
+    this.totalCompra = (this.seats.length * this.line['person_price']);
+    
   	this.createCode();
   }
 

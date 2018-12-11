@@ -49,7 +49,6 @@ export class HomePage {
     this.busca['destino'] = destino;
     this.cidades = [];
     this.navCtrl.push(ResultPage, {'busca':this.busca});
-    this.busca['destino'] = "";
   }
 
   goToAboutPage(){

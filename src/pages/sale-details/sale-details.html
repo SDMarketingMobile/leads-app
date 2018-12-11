@@ -2,6 +2,11 @@
 
   <ion-navbar color="primary">
     <ion-title>Detalhes da compra</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="goToQrCodeModal()">
+          <ion-icon name="barcode"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -10,13 +15,13 @@
   <ion-list>
     <ion-list-header><strong>Origem</strong></ion-list-header>
     <ion-item>
-      <h2>{{ line.city_origin }}</h2>
+      <h2>{{ line_origin.name }} ({{ line_origin.federative_unit }})</h2>
       <p>{{ route.departure_date }}</p>
     </ion-item>
 
     <ion-list-header><strong>Destino</strong></ion-list-header>
     <ion-item>
-      <h2>{{ line.city_destiny }}</h2>
+      <h2>{{ line_destiny.name }} ({{ line_destiny.federative_unit }})</h2>
       <p>{{ route.arrival_date }}</p>
     </ion-item>
 

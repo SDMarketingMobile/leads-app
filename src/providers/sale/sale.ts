@@ -64,5 +64,33 @@ export class SaleProvider {
 				});
 		});		
 	}
+
+	getSalesByRoute(params){
+		let url = this.utilProv.urlApi() + "sales";
+		
+		if(params == null)
+			params = [];
+
+		if(params != null && params.length > 0) {
+			params.forEach((param, index) => {
+			  if(index == 0)
+				url += "?";
+			  else
+				url += "&";
+	  
+			  url += param.key + "=" + param.value;
+			});
+		}
+
+		return new Promise((resolve, reject) => {
+			this.http.get(url)
+				.subscribe((result: any) => {
+					resolve(result.json());
+				},
+				(error) => {
+					reject(error);
+				});
+		});	
+	}
 	
 }

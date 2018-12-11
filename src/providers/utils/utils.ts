@@ -8,7 +8,7 @@ export class UtilsProvider {
   }
 
   urlApi(){
-    return 'http://186.226.56.5:4500/';
+    return 'http://192.168.0.12:4500/';
   }
 
 }

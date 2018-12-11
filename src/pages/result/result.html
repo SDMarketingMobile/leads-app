@@ -22,9 +22,9 @@
       </h1>
       <small><i class="fa fa-calendar"></i>&nbsp;{{ route.departure_date }}</small>
       <br>
-      <small><i class="fa fa-paper-plane"></i>&nbsp;{{ line.city_origin }} - {{ line.state_origin }}</small>
+      <small><i class="fa fa-paper-plane"></i>&nbsp;{{ line.origin.name }} ({{ line.origin.federative_unit }})</small>
       <br>
-      <small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;{{ line.city_destiny }} - {{ line.state_destiny }}</small>
+      <small><i class="fa fa-map-marker"></i> &nbsp;&nbsp;{{ line.destiny.name }} ({{ line.destiny.federative_unit }})</small>
       <br>
       <small><i class="fa fa-clock-o"></i> &nbsp;Previsão de chegada: {{ route.arrival_date }}</small>
     </ion-item>

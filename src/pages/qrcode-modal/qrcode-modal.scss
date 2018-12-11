@@ -1,15 +1,22 @@
 page-qrcode-modal {
-	ion-title{
+	ion-navbar{
 		text-align: center;
-	}
-
-	.box-qrcode{
-		width: 65%;
-		margin: 0 auto;
-		margin-top: 30px;
 	}
 
 	ion-card-content{
 		text-align: center;
+	}
+
+	.center{
+		text-align: center;
+	}
+
+	.title-center{
+		margin-left: 10%;
+		text-align: center;
+	}
+
+	.text-left{
+		text-align: left !important;
 	}
 }

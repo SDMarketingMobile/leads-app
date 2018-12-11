@@ -1,26 +1,42 @@
 <ion-header>
 
   <ion-navbar color="primary">
-	<ion-title>Cupom</ion-title>
-	<ion-buttons start>
-      <button ion-button (click)="dismissModal(null)">
-        <span ion-text showWhen="ios">Cancelar</span>
-        <ion-icon item-right name="close" showWhen="android,windows"></ion-icon>
-      </button>
-    </ion-buttons>
+		<ion-title showWhen="ios">Bilhete</ion-title>
+		<ion-title showWhen="android,windows" class="title-center">Bilhete</ion-title>
+		<ion-buttons start>
+			<button ion-button (click)="dismissModal(null)">
+				<span ion-text showWhen="ios">Cancelar</span>
+				<ion-icon item-right name="close" showWhen="android,windows"></ion-icon>
+			</button>
+		</ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-	<ion-card class="box-qrcode">
+<ion-content class="center">
+	<div>
 		<ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
 		<ion-card-content>
 			<ion-card-title>
-				Cupom
+				Bilhete
 			</ion-card-title>
 			<p>{{ this.qrData }}</p>
 		</ion-card-content>
-	</ion-card>
+	</div>
+
+	<ion-list>
+		<ion-list-header class="text-left"><strong>Origem</strong></ion-list-header>
+		<ion-item>
+			<h2>{{ line_origin.name }} ({{ line_origin.federative_unit }})</h2>
+			<p>{{ route.departure_date }}</p>
+		</ion-item>
+	</ion-list>
+	<ion-list>
+		<ion-list-header class="text-left"><strong>Destino</strong></ion-list-header>
+    <ion-item>
+      <h2>{{ line_destiny.name }} ({{ line_destiny.federative_unit }})</h2>
+      <p>{{ route.arrival_date }}</p>
+    </ion-item>
+	</ion-list>
 </ion-content>

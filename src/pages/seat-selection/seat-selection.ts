@@ -49,55 +49,6 @@ export class SeatSelectionPage {
       this.arr_seats2.push({assento: i, selected:0});
     }
 
-    /*this.arr_seats = [
-      {assento: 1, selected:2},
-      {assento: 2, selected:0},
-      {assento: 3, selected:2},
-      {assento: 4, selected:0},
-      {assento: 5, selected:0},
-      {assento: 6, selected:0},
-      {assento: 7, selected:0},
-      {assento: 8, selected:2},
-      {assento: 9, selected:2},
-      {assento: 10, selected:2},
-      {assento: 11, selected:2},
-      {assento: 12, selected:2},
-      {assento: 13, selected:2},
-      {assento: 14, selected:2},
-      {assento: 15, selected:0},
-      {assento: 16, selected:0},
-      {assento: 17, selected:2},
-      {assento: 18, selected:0},
-      {assento: 19, selected:0},
-      {assento: 20, selected:2},
-      {assento: 21, selected:0},
-      {assento: 22, selected:0}
-      
-    ];
-
-    this.arr_seats2 = [
-      {assento: 23, selected:2},
-      {assento: 24, selected:2},
-      {assento: 25, selected:0},
-      {assento: 26, selected:0},
-      {assento: 27, selected:0},
-      {assento: 28, selected:2},
-      {assento: 29, selected:0},
-      {assento: 30, selected:0},
-      {assento: 31, selected:0},
-      {assento: 32, selected:0},
-      {assento: 33, selected:2},
-      {assento: 34, selected:2},
-      {assento: 35, selected:0},
-      {assento: 36, selected:0},
-      {assento: 37, selected:2},
-      {assento: 38, selected:0},
-      {assento: 39, selected:0},
-      {assento: 40, selected:0},
-      {assento: 41, selected:2},
-      {assento: 42, selected:2}
-    ]*/
-
      this.arr_seats = l.chunk(this.arr_seats, 2);
      this.arr_seats2 = l.chunk(this.arr_seats2, 2);
      loader.dismiss();
